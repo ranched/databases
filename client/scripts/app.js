@@ -37,7 +37,7 @@ var app = {
 
   send: function(message) {
     app.startSpinner();
-
+    // console.log(message);
     // POST the message to the server
     $.ajax({
       url: app.server,
@@ -45,10 +45,12 @@ var app = {
       data: message,
       success: function (data) {
         // Clear messages input
+        console.log('send successful');
         app.$message.val('');
 
         // Trigger a fetch to update the messages, pass true to animate
         app.fetch();
+        
       },
       error: function (error) {
         console.error('chatterbox: Failed to send message', error);
@@ -64,7 +66,7 @@ var app = {
       contentType: 'application/json',
       success: function(data) {
         //console.log(data);
-        
+        console.log('fetched');
         // Don't bother if we have nothing to work with
         if (!data.results || !data.results.length) { return; }
         // Store messages for caching later
@@ -106,6 +108,7 @@ var app = {
           return message.roomname === app.roomname ||
                  app.roomname === 'lobby' && !message.roomname;
         })
+        .reverse()
         .forEach(app.renderMessage);
     }
 
