@@ -88,10 +88,22 @@ ALTER TABLE `messages` ADD FOREIGN KEY (id_room) REFERENCES `room` (`id`);
 -- ---
 -- Test Data
 -- ---
+INSERT INTO `room` (`roomname`) VALUES
+('lobby');
+INSERT INTO `users` (`username`) VALUES
+('hacker');
+INSERT INTO `messages` (`text`,`id_users`,`id_room`) VALUES
+('test message 1','1','1');
 
--- INSERT INTO `messages` (`id`,`text`,`id_users`,`id_room`) VALUES
--- ('','','','');
--- INSERT INTO `room` (`id`,`roomname`) VALUES
--- ('','');
--- INSERT INTO `users` (`id`,`username`) VALUES
--- ('','');
+
+INSERT INTO `users` (`username`) VALUES
+('hacker2');
+INSERT INTO `messages` (`text`,`id_users`,`id_room`) VALUES
+('test message 2','2','1');
+
+
+
+
+
+
+
